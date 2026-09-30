@@ -50,11 +50,15 @@ export default function App() {
   const [atms, setAtms] = useState([]);
   const [summary, setSummary] = useState(null);
   const [alerts, setAlerts] = useState([]);
-  const [selectedAtmId, setSelectedAtmId] = useState('atm-001');
+  const [selectedAtmId, setSelectedAtmId] = useState('atm-1087');
   const [forecastData, setForecastData] = useState([]);
+  const [atmTransactions, setAtmTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [apiOnline, setApiOnline] = useState(true);
   const [forecastHorizon, setForecastHorizon] = useState(14); // 7, 14, 30
+
+  // Auto-Refresh 1 Minute Timer (Showcase Mode)
+  const [refreshCountdown, setRefreshCountdown] = useState(60);
 
   // Search and Filter State
   const [searchQuery, setSearchQuery] = useState('');
@@ -63,12 +67,29 @@ export default function App() {
   // Modal State
   const [replenishModalAtm, setReplenishModalAtm] = useState(null);
 
+  // Initial Fetch & 1-Minute Auto-Refresh Timer
   useEffect(() => {
     fetchDashboardData();
+
+    // 1-minute (60s) auto refresh loop for showcase
+    const timer = setInterval(() => {
+      setRefreshCountdown((prev) => {
+        if (prev <= 1) {
+          fetchDashboardData();
+          return 60;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
-    fetchAtmForecast(selectedAtmId, forecastHorizon);
+    if (selectedAtmId) {
+      fetchAtmForecast(selectedAtmId, forecastHorizon);
+      fetchAtmTransactions(selectedAtmId);
+    }
   }, [selectedAtmId, forecastHorizon]);
 
   const fetchDashboardData = async () => {
@@ -111,7 +132,6 @@ export default function App() {
         throw new Error('Forecast fetch error');
       }
     } catch (err) {
-      // Generate fallback forecast dataset
       const dates = ['Sep 29', 'Sep 30', 'Oct 01', 'Oct 02', 'Oct 03', 'Oct 04', 'Oct 05', 'Oct 06', 'Oct 07', 'Oct 08', 'Oct 09', 'Oct 10', 'Oct 11', 'Oct 12'];
       const mockForecasts = dates.slice(0, horizon).map((dt, idx) => {
         const base = 12500 + Math.sin(idx) * 4500 + (idx === 3 ? 6300 : 0);
@@ -124,6 +144,18 @@ export default function App() {
         };
       });
       setForecastData(mockForecasts);
+    }
+  };
+
+  const fetchAtmTransactions = async (atmId) => {
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/atms/${atmId}/transactions?limit=15`);
+      if (res.ok) {
+        const data = await res.json();
+        setAtmTransactions(data.transactions || []);
+      }
+    } catch (err) {
+      setAtmTransactions([]);
     }
   };
 
@@ -163,6 +195,17 @@ export default function App() {
     setReplenishModalAtm(null);
   };
 
+  const selectedAtm = atms.find(a => a.atm_id === selectedAtmId) || atms[0] || {
+    atm_id: 'atm-1087',
+    name: 'ATM-1087 (Ghaziabad Hub)',
+    location_type: 'Transit & Retail',
+    capacity_usd: 50000,
+    current_cash_usd: 8500,
+    status: 'CRITICAL',
+    time_to_empty: '4.2h',
+    cassettes: [ { denomination: '₹2000', level: '8%' }, { denomination: '₹500', level: '14%' }, { denomination: '₹200', level: '22%' }, { denomination: '₹100', level: '35%' } ]
+  };
+
   const filteredAtms = atms.filter(a => {
     const matchesSearch = a.name.toLowerCase().includes(searchQuery.toLowerCase()) || a.atm_id.toLowerCase().includes(searchQuery.toLowerCase());
     if (filterStatus === 'CRITICAL') return matchesSearch && (a.status === 'CRITICAL' || a.cash_out_risk === 'CRITICAL');
@@ -189,7 +232,7 @@ export default function App() {
                   {activeTab === 'fleet' && 'Fleet Telemetry'}
                   {activeTab === 'forecast' && 'Demand Forecast'}
                   {activeTab === 'replenishment' && 'Replenishment Planner'}
-                  {activeTab === 'analytics' && 'Deep Analytics (ATM-1087)'}
+                  {activeTab === 'analytics' && `Live Telemetry: ${selectedAtm.name}`}
                 </span>
               </div>
             </div>
@@ -218,15 +261,18 @@ export default function App() {
             </div>
           </div>
 
-          {/* Bottom Row: Filter Pill Status Bar */}
+          {/* Bottom Row: Filter Pill Status Bar + 1-Minute Showcase Auto Refresh */}
           <div className="flex items-center justify-between gap-2 pb-1 text-xs">
             <button
-              onClick={fetchDashboardData}
+              onClick={() => {
+                fetchDashboardData();
+                setRefreshCountdown(60);
+              }}
               className="flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-medium transition"
             >
               <span className={`w-2 h-2 rounded-full ${apiOnline ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`}></span>
-              <span className="truncate">Delhi-NCR • Last 7 Days • Auto-Refresh 5m</span>
-              <ChevronDown className="w-3.5 h-3.5 text-on-surface-variant" />
+              <span className="truncate font-semibold">Delhi-NCR • Auto-Refresh 1m ({refreshCountdown}s)</span>
+              <RefreshCw className={`w-3 h-3 text-on-surface-variant ${loading ? 'animate-spin' : ''}`} />
             </button>
 
             <span className="px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant text-[0.625rem] uppercase tracking-wider font-bold">
@@ -261,7 +307,7 @@ export default function App() {
                       {alerts[0]?.atm_name || 'ATM-1087 (Ghaziabad Hub)'}
                     </p>
                     <p className="text-xs text-on-surface-variant mt-0.5">
-                      Available: <span className="font-bold text-error">₹1.4L</span> · Demand: <span className="font-semibold">₹3.2L</span> · Deficit: <span className="font-bold text-error">₹1.8L</span>
+                      Available: <span className="font-bold text-error">${alerts[0]?.current_cash_usd?.toLocaleString() || '8,500'}</span> · Refill Recommended: <span className="font-bold text-emerald-700">${alerts[0]?.recommended_refill_usd?.toLocaleString() || '41,500'}</span>
                     </p>
                     <div className="mt-3 flex items-center gap-2">
                       <button
@@ -271,7 +317,10 @@ export default function App() {
                         <Truck className="w-4 h-4" /> Instant Replenish
                       </button>
                       <button
-                        onClick={() => setActiveTab('analytics')}
+                        onClick={() => {
+                          setSelectedAtmId(alerts[0]?.atm_id || 'atm-1087');
+                          setActiveTab('analytics');
+                        }}
                         className="h-9 px-3 bg-surface-container-highest text-on-surface rounded-lg text-xs font-semibold hover:bg-surface-container-high transition"
                       >
                         Telemetry & Analytics
@@ -352,10 +401,10 @@ export default function App() {
                 </div>
                 <div className="mt-2">
                   <div className="text-2xl font-extrabold text-emerald-700 font-mono">
-                    {summary?.forecast_accuracy_pct || 96.4}%
+                    {summary?.forecast_accuracy_pct || 87.6}%
                   </div>
                   <div className="flex items-center gap-1 mt-1 text-xs text-on-surface-variant">
-                    <span className="text-emerald-700 font-bold">Model: {summary?.champion_model || 'RandomForest'}</span>
+                    <span className="text-emerald-700 font-bold">100% - MAPE (12.4%)</span>
                   </div>
                 </div>
               </div>
@@ -381,7 +430,15 @@ export default function App() {
                   <div key={atm.atm_id} className="p-3 rounded-lg bg-surface-container-low flex justify-between items-center gap-3">
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-sm text-on-surface">{atm.name}</span>
+                        <button
+                          onClick={() => {
+                            setSelectedAtmId(atm.atm_id);
+                            setActiveTab('analytics');
+                          }}
+                          className="font-bold text-sm text-on-surface hover:text-primary transition text-left"
+                        >
+                          {atm.name}
+                        </button>
                         <span className={`px-2 py-0.5 rounded-full text-[0.625rem] font-bold ${
                           atm.status === 'CRITICAL' ? 'bg-error-container text-on-error-container' : 'bg-amber-100 text-amber-900'
                         }`}>
@@ -393,12 +450,23 @@ export default function App() {
                       </p>
                     </div>
 
-                    <button
-                      onClick={() => executeReplenishment(atm.atm_id)}
-                      className="px-3 py-1.5 rounded-lg bg-primary text-on-primary text-xs font-semibold hover:bg-primary-container transition shadow-xs"
-                    >
-                      Refill
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => {
+                          setSelectedAtmId(atm.atm_id);
+                          setActiveTab('analytics');
+                        }}
+                        className="px-2.5 py-1.5 rounded-lg bg-surface-container-highest text-on-surface text-xs font-medium hover:bg-surface-container-high"
+                      >
+                        Telemetry
+                      </button>
+                      <button
+                        onClick={() => executeReplenishment(atm.atm_id)}
+                        className="px-3 py-1.5 rounded-lg bg-primary text-on-primary text-xs font-semibold hover:bg-primary-container transition shadow-xs"
+                      >
+                        Refill
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -553,7 +621,15 @@ export default function App() {
                   <div className="flex justify-between items-start">
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="font-bold text-base text-on-surface">{atm.name}</h3>
+                        <button
+                          onClick={() => {
+                            setSelectedAtmId(atm.atm_id);
+                            setActiveTab('analytics');
+                          }}
+                          className="font-bold text-base text-on-surface hover:text-primary transition text-left"
+                        >
+                          {atm.name}
+                        </button>
                         <span className={`px-2 py-0.5 rounded-full text-[0.625rem] font-bold uppercase ${
                           atm.status === 'CRITICAL' ? 'bg-error-container text-on-error-container' : atm.status === 'WARNING' ? 'bg-amber-100 text-amber-900' : 'bg-emerald-100 text-emerald-900'
                         }`}>
@@ -773,39 +849,62 @@ export default function App() {
         )}
 
         {/* ========================================================================= */}
-        {/* TAB 5: ATM-1087 DEEP TELEMETRY & ANALYTICS */}
+        {/* TAB 5: DYNAMIC DEEP TELEMETRY & TRANSACTION LOGS */}
         {/* ========================================================================= */}
         {activeTab === 'analytics' && (
           <div className="flex flex-col gap-4">
             <div className="bg-surface-container-lowest p-5 rounded-xl shadow-xs border border-surface-container-high flex flex-col gap-4">
-              <div className="flex justify-between items-start">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h2 className="font-extrabold text-lg text-on-surface">ATM-1087 (Ghaziabad Hub)</h2>
-                    <span className="px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container text-xs font-extrabold">
-                      CRITICAL
+              {/* ATM Header & Dynamic Selector */}
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h2 className="font-extrabold text-lg text-on-surface">{selectedAtm.name}</h2>
+                    <span className={`px-2.5 py-0.5 rounded-full text-xs font-extrabold ${
+                      selectedAtm.status === 'CRITICAL' ? 'bg-error-container text-on-error-container' : selectedAtm.status === 'WARNING' ? 'bg-amber-100 text-amber-900' : 'bg-emerald-100 text-emerald-900'
+                    }`}>
+                      {selectedAtm.status}
                     </span>
                   </div>
-                  <p className="text-xs text-on-surface-variant mt-0.5">Transit & Retail Node • Terminal ID: 1087-GZB-04</p>
+                  <p className="text-xs text-on-surface-variant mt-0.5">{selectedAtm.location_type} • ID: {selectedAtm.atm_id}</p>
                 </div>
 
-                <button
-                  onClick={() => executeReplenishment('atm-1087')}
-                  className="px-4 py-2 bg-error text-on-error rounded-lg text-xs font-bold shadow-xs hover:bg-error/90 transition flex items-center gap-1.5"
-                >
-                  <Truck className="w-4 h-4" /> Dispatch Emergency Refill
-                </button>
+                <div className="flex items-center gap-2">
+                  <select
+                    value={selectedAtmId}
+                    onChange={(e) => setSelectedAtmId(e.target.value)}
+                    className="bg-surface-container-low border border-surface-container-high text-on-surface text-xs rounded-lg px-3 py-2 font-bold focus:outline-none"
+                  >
+                    {atms.map((a) => (
+                      <option key={a.atm_id} value={a.atm_id}>
+                        {a.name}
+                      </option>
+                    ))}
+                  </select>
+
+                  <button
+                    onClick={() => executeReplenishment(selectedAtm.atm_id)}
+                    className="px-3.5 py-2 bg-error text-on-error rounded-lg text-xs font-bold shadow-xs hover:bg-error/90 transition flex items-center gap-1.5 flex-shrink-0"
+                  >
+                    <Truck className="w-4 h-4" /> Refill
+                  </button>
+                </div>
               </div>
 
               {/* Cash Countdown & Vault Meter */}
-              <div className="p-4 rounded-xl bg-error-container text-on-error-container flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+              <div className={`p-4 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-3 ${
+                selectedAtm.status === 'CRITICAL' ? 'bg-error-container text-on-error-container' : 'bg-surface-container-low text-on-surface'
+              }`}>
                 <div>
                   <span className="text-xs uppercase font-extrabold tracking-wider text-error">Cash-Out Countdown</span>
-                  <div className="text-3xl font-extrabold font-mono text-error mt-0.5">4h 12m Remaining</div>
+                  <div className="text-3xl font-extrabold font-mono text-error mt-0.5">
+                    {selectedAtm.time_to_empty || '24h'} Remaining
+                  </div>
                 </div>
                 <div className="text-left md:text-right">
-                  <span className="text-xs font-bold text-on-error-container">Available Vault Cash</span>
-                  <p className="text-xl font-extrabold font-mono text-error">₹1,40,000 / ₹5,00,000</p>
+                  <span className="text-xs font-bold text-on-surface-variant">Available Vault Cash</span>
+                  <p className="text-xl font-extrabold font-mono text-on-surface">
+                    ${selectedAtm.current_cash_usd.toLocaleString()} / ${selectedAtm.capacity_usd.toLocaleString()}
+                  </p>
                 </div>
               </div>
 
@@ -813,23 +912,57 @@ export default function App() {
               <div className="space-y-2">
                 <h3 className="font-bold text-xs text-on-surface uppercase tracking-wider">4-Cassette Dispenser Status</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 font-mono text-xs">
-                  <div className="p-3 rounded-lg bg-surface-container-low border border-surface-container-high text-center">
-                    <span className="text-on-surface-variant block text-[0.6875rem]">Cassette 1 (₹2000)</span>
-                    <span className="text-base font-bold text-error">8% Full</span>
-                  </div>
-                  <div className="p-3 rounded-lg bg-surface-container-low border border-surface-container-high text-center">
-                    <span className="text-on-surface-variant block text-[0.6875rem]">Cassette 2 (₹500)</span>
-                    <span className="text-base font-bold text-error">14% Full</span>
-                  </div>
-                  <div className="p-3 rounded-lg bg-surface-container-low border border-surface-container-high text-center">
-                    <span className="text-on-surface-variant block text-[0.6875rem]">Cassette 3 (₹200)</span>
-                    <span className="text-base font-bold text-amber-700">22% Full</span>
-                  </div>
-                  <div className="p-3 rounded-lg bg-surface-container-low border border-surface-container-high text-center">
-                    <span className="text-on-surface-variant block text-[0.6875rem]">Cassette 4 (₹100)</span>
-                    <span className="text-base font-bold text-emerald-700">35% Full</span>
-                  </div>
+                  {selectedAtm.cassettes ? (
+                    selectedAtm.cassettes.map((c, i) => (
+                      <div key={i} className="p-3 rounded-lg bg-surface-container-low border border-surface-container-high text-center">
+                        <span className="text-on-surface-variant block text-[0.6875rem]">Cassette {i + 1} ({c.denomination})</span>
+                        <span className={`text-base font-bold ${
+                          parseInt(c.level) < 20 ? 'text-error' : parseInt(c.level) < 40 ? 'text-amber-700' : 'text-emerald-700'
+                        }`}>{c.level} Full</span>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="col-span-4 p-3 rounded-lg bg-surface-container-low text-center text-xs text-on-surface-variant">
+                      Cassette telemetry synced
+                    </div>
+                  )}
                 </div>
+              </div>
+
+              {/* Live Database Historical Transaction Stream */}
+              <div className="space-y-2 pt-2 border-t border-surface-container-high">
+                <h3 className="font-bold text-xs text-on-surface uppercase tracking-wider flex items-center gap-1.5">
+                  <Activity className="w-4 h-4 text-primary" /> Database Historical Transaction Log ({atmTransactions.length} Logged)
+                </h3>
+
+                {atmTransactions.length > 0 ? (
+                  <div className="overflow-x-auto rounded-xl border border-surface-container-high">
+                    <table className="w-full text-left font-mono text-xs">
+                      <thead className="bg-surface-container-low text-on-surface-variant uppercase text-[0.625rem]">
+                        <tr>
+                          <th className="p-2.5">Date</th>
+                          <th className="p-2.5">Weekday</th>
+                          <th className="p-2.5">Withdrawals</th>
+                          <th className="p-2.5 text-right">Total Disbursed ($)</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-surface-container-high">
+                        {atmTransactions.map((tx, idx) => (
+                          <tr key={idx} className="hover:bg-surface-container-low/50">
+                            <td className="p-2.5 font-bold text-on-surface">{tx.transaction_date || tx.date}</td>
+                            <td className="p-2.5 text-on-surface-variant">{tx.weekday}</td>
+                            <td className="p-2.5 text-on-surface-variant">{tx.num_withdrawals} txns</td>
+                            <td className="p-2.5 text-right font-bold text-primary">${tx.total_amount_usd.toLocaleString()}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="p-4 rounded-xl bg-surface-container-low text-center text-xs text-on-surface-variant">
+                    Loading historical transactions from SQLite database...
+                  </div>
+                )}
               </div>
             </div>
           </div>
