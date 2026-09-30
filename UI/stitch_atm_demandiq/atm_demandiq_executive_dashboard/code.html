@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#faf8ff;}body{overscroll-behavior:none;font-family:'Inter',sans-serif;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-variant": "#dae2fd", "secondary-fixed": "#e2dfff", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#3323cc", "on-tertiary": "#ffffff", "on-secondary-container": "#fffbff", "secondary-fixed-dim": "#c3c0ff", "tertiary-fixed": "#c9e6ff", "surface-container-lowest": "#ffffff", "on-surface": "#131b2e", "surface-container-low": "#f2f3ff", "primary-fixed-dim": "#b7c4ff", "surface": "#faf8ff", "on-primary-fixed": "#001551", "tertiary-fixed-dim": "#89ceff", "on-tertiary-container": "#abdaff", "primary": "#0037b0", "surface-bright": "#faf8ff", "surface-dim": "#d2d9f4", "surface-tint": "#2151da", "error": "#ba1a1a", "background": "#faf8ff", "surface-container": "#eaedff", "on-error": "#ffffff", "primary-fixed": "#dce1ff", "inverse-primary": "#b7c4ff", "secondary": "#4b41e1", "on-secondary-fixed": "#0f0069", "on-background": "#131b2e", "inverse-surface": "#283044", "on-primary-fixed-variant": "#0039b5", "on-secondary": "#ffffff", "tertiary-container": "#00628d", "surface-container-highest": "#dae2fd", "outline": "#747686", "secondary-container": "#645efb", "surface-container-high": "#e2e7ff", "on-tertiary-fixed": "#001e2f", "on-surface-variant": "#434655", "inverse-on-surface": "#eef0ff", "on-primary": "#ffffff", "on-error-container": "#93000a", "tertiary": "#00496b", "primary-container": "#1d4ed8", "on-tertiary-fixed-variant": "#004c6e", "outline-variant": "#c4c5d7", "on-primary-container": "#cad3ff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin": "1rem", "margin-desktop": "2rem", "gutter-desktop": "1.5rem", "space-md": "1rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter": "1rem", "margin-tablet": "1.5rem" }, "fontFamily": { "label-sm": ["Inter"], "headline-sm": ["Inter"], "headline-xl-mobile": ["Inter"], "headline-lg": ["Inter"], "headline-xl": ["Inter"], "body-md": ["Inter"], "headline-lg-mobile": ["Inter"], "headline-md": ["Inter"], "body-lg": ["Inter"], "label-md": ["Inter"], "body-sm": ["Inter"] }, "fontSize": { "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.04em", "fontWeight": "600" }], "headline-sm": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "-0.005em", "fontWeight": "600" }], "headline-xl-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-xl": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg-mobile": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-md": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0.01em", "fontWeight": "500" }], "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.005em", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen antialiased"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-28 px-margin flex flex-col justify-between py-space-xs"><div class="flex items-center justify-between gap-space-sm h-14"><div class="flex items-center gap-space-sm min-w-0"><img alt="ATM DemandIQ Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1X4QYuda5tpzSHyElPorUE2QezxdbXbIv2m5xF8QbXpRgjeSiB9iQLVj52a1P1ySR6znUjc7p_E_dXkHb3BJa0Tex1mQY92VRIa_puax6uRBAxAKLbdCPcEL8sAiUKSti2Yn4J-ZiFZhobandQOd8R-nV3FdEEdrstaqH_Ma5_yeG6zeUjhn3t1rCOllwUhn-WL-X1ZUSEnG_Z8Uvhmh1UIyBxn9NbpokEsGP3AMTZaUmX2Md6bVN_FieI"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-surface truncate leading-tight">ATM DemandIQ</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Dashboard</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Notifications" class="relative w-11 h-11 flex items-center justify-center rounded-xl hover:bg-surface-container-high transition-colors text-on-surface-variant" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-2 right-2 w-4 h-4 bg-error text-on-error font-label-sm text-[0.625rem] rounded-full flex items-center justify-center font-bold">3</span></button><div class="flex items-center gap-space-xs pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover flex-shrink-0 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbLTALmqGi1IMfEDwm1IlR9XJKkMQlWSeB9qZMbzhGY9c1kmckkbihFWuRHfOrs5HTg1mNFQQVXVkFnZoyDFggYvVpvbNB2x2tH9PWN2-Bno4JODcR3VaJVFewQuCaK4J7I-CJ9IriUVBaoC918-SFxfcG5KuFMdgWqmrWykoPHRz2j3-UzpYw7x8L4uUnZmU2pZNRh37FdZSyxRpsvICQnnDYvNvBU9x7PYrT35zszeFd7XAxHxlvBA"/><div class="hidden sm:flex flex-col text-left"><span class="font-label-sm text-label-sm text-on-surface leading-none font-semibold">Admin</span><span class="font-label-sm text-[0.625rem] text-on-surface-variant leading-none mt-0.5">Cash Mgmt</span></div></div></div></div><div class="flex items-center justify-between gap-space-xs pb-space-xs"><button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm max-w-[85%] truncate transition-colors" type="button"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span><span class="truncate font-medium">Delhi-NCR • Last 7 Days • Auto-Refresh 5m</span><span class="material-symbols-outlined text-sm text-on-surface-variant">expand_more</span></button><div class="flex items-center gap-space-xs"><span class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[0.625rem] uppercase tracking-wider font-bold">Live</span></div></div></div></header><main class="flex flex-col relative w-full pt-28 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin space-y-space-md">
+<!-- 1. Urgent Critical Alert Banner -->
+<section class="w-full rounded-xl bg-error-container text-on-error-container p-space-md shadow-sm">
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-error text-on-error flex items-center justify-center flex-shrink-0 animate-pulse mt-0.5">
+<span class="material-symbols-outlined text-[18px]">emergency</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap mb-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error font-bold">Critical Cash-Out Alert</span>
+<span class="px-space-xs py-0.5 rounded-full bg-error/10 text-error font-label-sm text-[0.625rem] font-semibold">T-minus 4.2h</span>
+</div>
+<p class="font-body-md text-body-md font-semibold text-on-surface leading-snug">
+          ATM-1087 (Ghaziabad Hub)
+        </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          Available: <span class="font-medium text-error">₹1.4L</span> · Demand: <span class="font-medium">₹3.2L</span> · Deficit: <span class="font-medium text-error">₹1.8L</span>
+</p>
+<div class="mt-space-sm flex items-center gap-space-xs">
+<button class="h-9 px-space-md bg-error text-on-error rounded-lg font-label-md text-label-md font-semibold flex items-center gap-1 shadow-sm active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+            Instant Replenish
+          </button>
+<button class="h-9 px-space-sm bg-surface-container-highest text-on-surface rounded-lg font-label-md text-label-md font-medium hover:bg-surface-container-high transition-colors" type="button">
+            Telemetry
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Executive KPI Cards (Bento style grid) -->
+<section class="grid grid-cols-2 gap-space-sm">
+<!-- KPI 1: Total Fleet -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Fleet</span>
+<span class="material-symbols-outlined text-primary text-[18px]">account_balance</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tabular-nums font-bold">1,248</div>
+<div class="flex items-center gap-1 mt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-label-sm text-[0.625rem] font-bold">98.2%</span>
+<span>uptime</span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-1.5 rounded-b-xl flex justify-between items-center text-on-surface-variant font-body-sm text-[0.6875rem]">
+<span>YoY Delta</span>
+<span class="text-primary font-semibold tabular-nums">+12 units</span>
+</div>
+</div>
+<!-- KPI 2: ATMs at Risk -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">At Risk</span>
+<span class="material-symbols-outlined text-error text-[18px]">warning</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-error tabular-nums font-bold">27</div>
+<div class="flex items-center gap-1.5 mt-1 font-body-sm text-body-sm tabular-nums">
+<span class="flex items-center gap-0.5 text-error font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>9 Crit
+          </span>
+<span class="text-outline-variant">·</span>
+<span class="flex items-center gap-0.5 text-amber-700 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>18 High
+          </span>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-1.5 rounded-b-xl flex justify-between items-center text-on-surface-variant font-body-sm text-[0.6875rem]">
+<span>Vs Yesterday</span>
+<span class="text-error font-semibold tabular-nums">+4 ATMs</span>
+</div>
+</div>
+<!-- KPI 3: Forecasted Demand -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">24h Demand</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">trending_up</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tabular-nums font-bold">₹18.6 Cr</div>
+<div class="flex items-center gap-1 mt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="px-1.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-[0.625rem] font-bold">+8.4%</span>
+<span>vs lw</span>
+</div>
+</div>
+<!-- Mini Sparkline inline -->
+<div class="mt-2 pt-1">
+<svg class="w-full h-4 stroke-secondary fill-none stroke-2 overflow-visible" viewbox="0 0 100 18">
+<path d="M 0,14 Q 20,4 35,9 T 70,6 T 100,2"></path>
+<circle class="fill-secondary stroke-surface-container-lowest stroke-2" cx="100" cy="2" r="2.5"></circle>
+</svg>
+</div>
+</div>
+<!-- KPI 4: Forecast Accuracy -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">AI Accuracy</span>
+<span class="material-symbols-outlined text-tertiary text-[18px]">neurology</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tabular-nums font-bold">87.4%</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate mt-0.5">RF Model v3.2</p>
+</div>
+<div class="mt-2 pt-2 bg-surface-container-low/50 -mx-space-md -mb-space-md px-space-md py-1.5 rounded-b-xl flex justify-between items-center text-on-surface-variant font-body-sm text-[0.6875rem]">
+<span>Confidence</span>
+<span class="text-emerald-700 font-semibold tabular-nums">+1.8% gain</span>
+</div>
+</div>
+<!-- KPI 5: Replenishment Capital Due (Span 2 columns) -->
+<div class="col-span-2 bg-surface-container-high/60 p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">currency_rupee</span>
+</div>
+<div class="min-w-0">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Replenishment Capital Due</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold tabular-nums">
+            ₹4.82 Cr <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/ 43 ATMs today</span>
+</div>
+</div>
+</div>
+<button aria-label="Replenishment Schedule" class="w-8 h-8 rounded-lg bg-surface-container-lowest text-primary flex items-center justify-center shadow-sm flex-shrink-0 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- 3. Demand Overview Interactive Chart Section -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Actual vs Predicted Demand</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded-full">Delhi-NCR</span>
+</div>
+<div class="flex items-center justify-between">
+<!-- Interval Pills -->
+<div class="flex items-center gap-1 bg-surface-container-low p-0.5 rounded-lg">
+<button class="px-space-sm py-1 rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold shadow-xs" type="button">Daily</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant font-label-sm text-label-sm" type="button">Weekly</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant font-label-sm text-label-sm" type="button">Monthly</button>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant tabular-nums">24 Sep – 30 Sep</span>
+</div>
+</div>
+<!-- Chart Container -->
+<div class="relative pt-2 pb-1">
+<!-- Tooltip Callout -->
+<div class="mb-2 bg-inverse-surface text-inverse-on-surface rounded-lg p-2 text-left shadow-md flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-fixed animate-ping"></span>
+<span class="font-label-sm text-label-sm font-semibold">29 Sep (Peak Festival Pre-load)</span>
+</div>
+<div class="font-label-sm text-label-sm tabular-nums text-primary-fixed">
+          Act: ₹2.40L | Fcst: ₹2.55L <span class="text-error-container text-[0.625rem]">(-5.8%)</span>
+</div>
+</div>
+<!-- High-fidelity SVG Chart -->
+<svg aria-label="Demand Chart" class="w-full h-44 overflow-visible select-none" viewbox="0 0 340 160">
+<defs>
+<lineargradient id="confidenceBand" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#4b41e1" stop-opacity="0.18"></stop>
+<stop offset="100%" stop-color="#4b41e1" stop-opacity="0.01"></stop>
+</lineargradient>
+</defs>
+<!-- Y-Axis Grids and Labels -->
+<g class="text-[9px] fill-on-surface-variant font-body-sm">
+<line stroke="#eaedff" stroke-dasharray="3,3" stroke-width="1" x1="30" x2="335" y1="20" y2="20"></line>
+<text text-anchor="end" x="25" y="23">₹30L</text>
+<line stroke="#eaedff" stroke-dasharray="3,3" stroke-width="1" x1="30" x2="335" y1="55" y2="55"></line>
+<text text-anchor="end" x="25" y="58">₹24L</text>
+<line stroke="#eaedff" stroke-dasharray="3,3" stroke-width="1" x1="30" x2="335" y1="90" y2="90"></line>
+<text text-anchor="end" x="25" y="93">₹18L</text>
+<line stroke="#eaedff" stroke-dasharray="3,3" stroke-width="1" x1="30" x2="335" y1="125" y2="125"></line>
+<text text-anchor="end" x="25" y="128">₹12L</text>
+</g>
+<!-- Confidence Area Range for Predicted Demand -->
+<path d="M 40,110 
+                 C 80,95 120,70 160,80 
+                 C 200,90 230,50 270,42 
+                 C 290,38 310,32 330,30
+                 L 330,55 
+                 C 310,58 290,62 270,68 
+                 C 230,78 200,110 160,105 
+                 C 120,100 80,122 40,130 Z" fill="url(#confidenceBand)"></path>
+<!-- ML Predicted Demand (Violet Dashed) -->
+<path d="M 40,120 
+                 C 80,108 120,84 160,92 
+                 C 200,100 230,64 270,55 
+                 C 290,50 310,45 330,42" fill="none" stroke="#645efb" stroke-dasharray="4,4" stroke-width="2"></path>
+<!-- Actual Demand (Solid Deep Blue) -->
+<path d="M 40,128 
+                 C 80,114 120,78 160,88 
+                 C 200,98 230,72 270,62 
+                 C 290,58 310,50 330,46" fill="none" stroke="#0037b0" stroke-width="2.5"></path>
+<!-- Active Inspection Point on Sep 29 (x=270, actual=62, forecast=55) -->
+<line opacity="0.6" stroke="#0037b0" stroke-dasharray="2,2" stroke-width="1.5" x1="270" x2="270" y1="15" y2="135"></line>
+<circle cx="270" cy="55" fill="#645efb" r="4"></circle>
+<circle cx="270" cy="62" fill="#0037b0" r="5" stroke="#ffffff" stroke-width="2"></circle>
+<!-- X-Axis Labels -->
+<g class="text-[9px] fill-on-surface-variant font-body-sm">
+<text text-anchor="middle" x="40" y="146">24 Sep</text>
+<text text-anchor="middle" x="88" y="146">25</text>
+<text text-anchor="middle" x="135" y="146">26</text>
+<text text-anchor="middle" x="180" y="146">27</text>
+<text text-anchor="middle" x="225" y="146">28</text>
+<text fill="#0037b0" font-weight="700" text-anchor="middle" x="270" y="146">29 Sep</text>
+<text text-anchor="middle" x="315" y="146">30</text>
+</g>
+</svg>
+<!-- Chart Legend -->
+<div class="flex items-center justify-center gap-space-md pt-2">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-1 bg-primary rounded-full"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Actual Cash</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-0.5 border-t-2 border-dashed border-secondary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ML Forecast (RF v3.2)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Operational Risk Overview & ATM List -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Fleet Operational Triage</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Prioritized by stockout probability</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-0.5" type="button">
+        Map View <span class="material-symbols-outlined text-[16px]">map</span>
+</button>
+</div>
+<!-- Filter Pills Bar -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1 -mx-margin px-margin no-scrollbar">
+<button class="h-8 px-space-sm rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-semibold flex items-center gap-1 whitespace-nowrap shadow-xs" type="button">
+<span>All Fleet</span>
+<span class="bg-on-primary/20 text-on-primary px-1.5 py-0.2 rounded-full text-[0.625rem]">1,248</span>
+</button>
+<button class="h-8 px-space-sm rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-medium flex items-center gap-1 whitespace-nowrap" type="button">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span>Critical</span>
+<span class="bg-error text-on-error px-1.5 py-0.2 rounded-full text-[0.625rem]">9</span>
+</button>
+<button class="h-8 px-space-sm rounded-full bg-amber-50 text-amber-900 font-label-sm text-label-sm font-medium flex items-center gap-1 whitespace-nowrap" type="button">
+<span>High Demand</span>
+<span class="bg-amber-200 text-amber-900 px-1.5 py-0.2 rounded-full text-[0.625rem]">18</span>
+</button>
+<button class="h-8 px-space-sm rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-medium flex items-center gap-1 whitespace-nowrap" type="button">
+<span>Normal Float</span>
+<span class="text-on-surface-variant text-[0.625rem]">1,221</span>
+</button>
+</div>
+<!-- Operational Cards -->
+<div class="space-y-space-sm">
+<!-- Card 1: Critical (ATM-1087) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-error"></div>
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">ATM-1087</span>
+<span class="px-2 py-0.5 rounded-full bg-error text-on-error font-label-sm text-[0.625rem] font-bold uppercase tracking-wider">Critical</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Ghaziabad Commercial Hub · Route G-04</p>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-error font-bold flex items-center justify-end gap-0.5">
+<span class="material-symbols-outlined text-[14px]">timer</span> ~14:30 today
+            </span>
+<span class="font-body-sm text-[0.6875rem] text-on-surface-variant">Stockout Est.</span>
+</div>
+</div>
+<!-- Meter bar -->
+<div class="space-y-1">
+<div class="flex justify-between items-center font-body-sm text-body-sm tabular-nums">
+<span class="text-on-surface-variant">Float Ratio: <strong class="text-error font-semibold">43%</strong></span>
+<span class="text-on-surface font-medium">₹1.4L <span class="text-on-surface-variant font-normal">/ ₹3.2L needed</span></span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container">
+<div class="h-full rounded-full bg-error w-[43%]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span>Last Refilled: <strong>18 hrs ago</strong></span>
+<span class="text-error font-medium">Deficit: -₹1.80L</span>
+</div>
+<!-- Action Row -->
+<div class="pt-1 flex items-center gap-space-xs">
+<button class="flex-1 h-9 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-1 shadow-xs active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+            Dispatch Cash
+          </button>
+<button class="h-9 px-space-sm bg-surface-container-high text-on-surface-variant rounded-lg font-label-md text-label-md font-medium flex items-center justify-center hover:text-on-surface transition-colors" type="button">
+            Analytics
+          </button>
+</div>
+</div>
+<!-- Card 2: High Demand (ATM-1152) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-amber-500"></div>
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">ATM-1152</span>
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-label-sm text-[0.625rem] font-bold uppercase tracking-wider">High Demand</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Connaught Place Central · Route DL-01</p>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-amber-800 font-bold flex items-center justify-end gap-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 22:00 tonight
+            </span>
+<span class="font-body-sm text-[0.6875rem] text-on-surface-variant">Stockout Est.</span>
+</div>
+</div>
+<!-- Meter bar -->
+<div class="space-y-1">
+<div class="flex justify-between items-center font-body-sm text-body-sm tabular-nums">
+<span class="text-on-surface-variant">Float Ratio: <strong class="text-amber-800 font-semibold">93%</strong></span>
+<span class="text-on-surface font-medium">₹2.8L <span class="text-on-surface-variant font-normal">/ ₹3.0L needed</span></span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container">
+<div class="h-full rounded-full bg-amber-500 w-[93%]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span>Last Refilled: <strong>8 hrs ago</strong></span>
+<span class="text-amber-700 font-medium">Surge: +18% Eve</span>
+</div>
+<div class="pt-1 flex items-center gap-space-xs">
+<button class="w-full h-9 bg-surface-container-high text-on-surface rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-1 hover:bg-surface-container-highest transition-colors" type="button">
+            View ATM Telemetry &amp; Route
+          </button>
+</div>
+</div>
+<!-- Card 3: Normal (ATM-1024) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-emerald-500"></div>
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">ATM-1024</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-label-sm text-[0.625rem] font-bold uppercase tracking-wider">Optimal</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Noida Sector 62 Tech Zone · Route N-09</p>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-emerald-700 font-bold flex items-center justify-end gap-0.5">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Healthy
+            </span>
+<span class="font-body-sm text-[0.6875rem] text-on-surface-variant">&gt; 36 hrs buffer</span>
+</div>
+</div>
+<!-- Meter bar -->
+<div class="space-y-1">
+<div class="flex justify-between items-center font-body-sm text-body-sm tabular-nums">
+<span class="text-on-surface-variant">Float Ratio: <strong class="text-emerald-700 font-semibold">110%</strong></span>
+<span class="text-on-surface font-medium">₹4.2L <span class="text-on-surface-variant font-normal">/ ₹3.8L demand</span></span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container">
+<div class="h-full rounded-full bg-emerald-500 w-[100%]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 text-on-surface-variant font-body-sm text-body-sm">
+<span>Last Refilled: <strong>2 hrs ago</strong></span>
+<span class="text-emerald-700 font-medium">Buffer: +₹0.40L</span>
+</div>
+<div class="pt-1 flex items-center gap-space-xs">
+<button class="w-full h-9 bg-surface-container-high text-on-surface rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-1 hover:bg-surface-container-highest transition-colors" type="button">
+            View Details
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Quick Analytical Insights -->
+<section class="space-y-space-xs">
+<div class="flex items-center gap-1.5 px-0.5">
+<span class="material-symbols-outlined text-primary text-[18px]">lightbulb</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Predictive Fleet Intelligence</h3>
+</div>
+<div class="space-y-space-xs">
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-xs flex items-start gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">insights</span>
+</div>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm font-semibold text-on-surface">Weekend Demand Surge Detected</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Sector 62 &amp; CP commercial clusters projected to experience <strong class="text-primary font-semibold">+18.4%</strong> higher cash withdrawal velocity over Saturday-Sunday.
+          </p>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-xs flex items-start gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">event_repeat</span>
+</div>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm font-semibold text-on-surface">Month-End Corporate Payroll Pattern</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            14 high-traffic ATMs in Delhi IT corridors trigger two-stage replenishment cycles starting tomorrow morning at 06:00 IST.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Cash Van Deployment Live Status Card with Placeholder Image -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-sm mb-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Cash Logistics In-Transit</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Active Armored Van Fleet: Delhi-NCR</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-[0.6875rem] font-bold">6 Active Vans</span>
+</div>
+<div class="relative w-full h-32 rounded-xl overflow-hidden shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Modern high security bank cash transit armored van driving through an urban highway in Delhi India during daytime corporate banking logistics setting crisp clean institutional fintech atmosphere deep blue enterprise color tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6KFwXcD66pzWqquw_gM4sq5wGev-smRQiEO_-233X_hTOOUkHMhBHGnr1s-HuRo0KLERA1O9KMtM22UJWBWm6oUyw5SGzGmZy1a1mHMv_NAMkp27nIOcgcBGJiolXmAfLq6Msm8YhYxCaH_YDNJ4rYR8vLXHNNheW8X5gw4ut1Xs6SFDh-suqGA-VCQLwmyfBHbFANPBjHByFlWNNW_4i5tQ8pSM7-KCLke8JapYzwU7FxP0Es6ubqQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/90 via-inverse-surface/30 to-transparent flex items-end p-3">
+<div class="text-inverse-on-surface flex items-center justify-between w-full">
+<div>
+<div class="font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              Van DL-4C-9921 · En Route Ghaziabad
+            </div>
+<div class="font-body-sm text-[0.6875rem] opacity-90">ETA ATM-1087: 28 mins · Carrying ₹2.5 Cr</div>
+</div>
+<button class="px-2.5 py-1 bg-surface-container-lowest text-primary rounded font-label-sm text-label-sm font-semibold shadow-xs" type="button">
+            Track
+          </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Simple micro-interaction for active tab filter buttons
+  document.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      if (this.innerText.includes('Daily') || this.innerText.includes('Weekly') || this.innerText.includes('Monthly')) {
+        const parent = this.parentElement;
+        parent.querySelectorAll('button').forEach(b => {
+          b.className = 'px-space-sm py-1 rounded text-on-surface-variant font-label-sm text-label-sm';
+        });
+        this.className = 'px-space-sm py-1 rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold shadow-xs';
+      }
+    });
+  });
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 transition-colors text-primary font-semibold" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm text-[0.6875rem]">Dashboard</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="atm-monitoring" href="#"><span class="material-symbols-outlined text-[22px]">local_atm</span><span class="font-label-sm text-label-sm text-[0.6875rem]">ATMs</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="demand-forecast" href="#"><span class="material-symbols-outlined text-[22px]">trending_up</span><span class="font-label-sm text-label-sm text-[0.6875rem]">Forecast</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="replenishment" href="#"><span class="material-symbols-outlined text-[22px]">local_shipping</span><span class="font-label-sm text-label-sm text-[0.6875rem]">Replenish</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="alerts" href="#"><span class="material-symbols-outlined text-[22px]">notification_important</span><span class="font-label-sm text-label-sm text-[0.6875rem]">Alerts</span></a></div></nav></body></html>

@@ -1,0 +1,73 @@
+{
+    "champion_model": "RandomForest",
+    "features": [
+        "ATM Name",
+        "Lag_1_Day",
+        "Lag_7_Day",
+        "Lag_14_Day",
+        "Lag_30_Day",
+        "Rolling_7_Day_Mean",
+        "Rolling_14_Day_Mean",
+        "Rolling_30_Day_Mean",
+        "Year",
+        "Month",
+        "Day",
+        "Day_of_Week",
+        "Is_Weekend",
+        "Week_of_Year",
+        "Working Day",
+        "Holiday Sequence",
+        "Festival Religion"
+    ],
+    "categorical_features": [
+        "ATM Name",
+        "Festival Religion",
+        "Working Day",
+        "Holiday Sequence"
+    ],
+    "numerical_features": [
+        "Lag_1_Day",
+        "Lag_7_Day",
+        "Lag_14_Day",
+        "Lag_30_Day",
+        "Rolling_7_Day_Mean",
+        "Rolling_14_Day_Mean",
+        "Rolling_30_Day_Mean",
+        "Year",
+        "Month",
+        "Day",
+        "Day_of_Week",
+        "Is_Weekend",
+        "Week_of_Year"
+    ],
+    "evaluation_results": {
+        "LinearRegression": {
+            "MAE": 3062.62,
+            "RMSE": 4098.48,
+            "MAPE": 2493.01,
+            "R2": 0.3126,
+            "Accuracy_Pct": 0.0
+        },
+        "RandomForest": {
+            "MAE": 2992.93,
+            "RMSE": 4014.22,
+            "MAPE": 2430.13,
+            "R2": 0.3406,
+            "Accuracy_Pct": 0.0
+        },
+        "GradientBoosting": {
+            "MAE": 3378.01,
+            "RMSE": 4324.04,
+            "MAPE": 2654.65,
+            "R2": 0.2348,
+            "Accuracy_Pct": 0.0
+        }
+    },
+    "atms": [
+        "Airport ATM",
+        "Christ College ATM",
+        "Mount Road ATM",
+        "Big Street ATM",
+        "KK Nagar ATM"
+    ]
+}

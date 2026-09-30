@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#faf8ff;}body{overscroll-behavior:none;font-family:'Inter',sans-serif;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-variant": "#dae2fd", "secondary-fixed": "#e2dfff", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#3323cc", "on-tertiary": "#ffffff", "on-secondary-container": "#fffbff", "secondary-fixed-dim": "#c3c0ff", "tertiary-fixed": "#c9e6ff", "surface-container-lowest": "#ffffff", "on-surface": "#131b2e", "surface-container-low": "#f2f3ff", "primary-fixed-dim": "#b7c4ff", "surface": "#faf8ff", "on-primary-fixed": "#001551", "tertiary-fixed-dim": "#89ceff", "on-tertiary-container": "#abdaff", "primary": "#0037b0", "surface-bright": "#faf8ff", "surface-dim": "#d2d9f4", "surface-tint": "#2151da", "error": "#ba1a1a", "background": "#faf8ff", "surface-container": "#eaedff", "on-error": "#ffffff", "primary-fixed": "#dce1ff", "inverse-primary": "#b7c4ff", "secondary": "#4b41e1", "on-secondary-fixed": "#0f0069", "on-background": "#131b2e", "inverse-surface": "#283044", "on-primary-fixed-variant": "#0039b5", "on-secondary": "#ffffff", "tertiary-container": "#00628d", "surface-container-highest": "#dae2fd", "outline": "#747686", "secondary-container": "#645efb", "surface-container-high": "#e2e7ff", "on-tertiary-fixed": "#001e2f", "on-surface-variant": "#434655", "inverse-on-surface": "#eef0ff", "on-primary": "#ffffff", "on-error-container": "#93000a", "tertiary": "#00496b", "primary-container": "#1d4ed8", "on-tertiary-fixed-variant": "#004c6e", "outline-variant": "#c4c5d7", "on-primary-container": "#cad3ff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin": "1rem", "margin-desktop": "2rem", "gutter-desktop": "1.5rem", "space-md": "1rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter": "1rem", "margin-tablet": "1.5rem" }, "fontFamily": { "label-sm": ["Inter"], "headline-sm": ["Inter"], "headline-xl-mobile": ["Inter"], "headline-lg": ["Inter"], "headline-xl": ["Inter"], "body-md": ["Inter"], "headline-lg-mobile": ["Inter"], "headline-md": ["Inter"], "body-lg": ["Inter"], "label-md": ["Inter"], "body-sm": ["Inter"] }, "fontSize": { "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.04em", "fontWeight": "600" }], "headline-sm": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "-0.005em", "fontWeight": "600" }], "headline-xl-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-xl": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg-mobile": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-md": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0.01em", "fontWeight": "500" }], "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.005em", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface text-on-surface font-body-md text-body-md flex flex-col min-h-screen antialiased"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-28 px-margin flex flex-col justify-between py-space-xs"><div class="flex items-center justify-between gap-space-sm h-14"><div class="flex items-center gap-space-sm min-w-0"><img alt="ATM DemandIQ Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1X4QYuda5tpzSHyElPorUE2QezxdbXbIv2m5xF8QbXpRgjeSiB9iQLVj52a1P1ySR6znUjc7p_E_dXkHb3BJa0Tex1mQY92VRIa_puax6uRBAxAKLbdCPcEL8sAiUKSti2Yn4J-ZiFZhobandQOd8R-nV3FdEEdrstaqH_Ma5_yeG6zeUjhn3t1rCOllwUhn-WL-X1ZUSEnG_Z8Uvhmh1UIyBxn9NbpokEsGP3AMTZaUmX2Md6bVN_FieI"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-on-surface truncate leading-tight">ATM DemandIQ</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Demand Forecast</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Notifications" class="relative w-11 h-11 flex items-center justify-center rounded-xl hover:bg-surface-container-high transition-colors text-on-surface-variant" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-2 right-2 w-4 h-4 bg-error text-on-error font-label-sm text-[0.625rem] rounded-full flex items-center justify-center font-bold">3</span></button><div class="flex items-center gap-space-xs pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover flex-shrink-0 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbLTALmqGi1IMfEDwm1IlR9XJKkMQlWSeB9qZMbzhGY9c1kmckkbihFWuRHfOrs5HTg1mNFQQVXVkFnZoyDFggYvVpvbNB2x2tH9PWN2-Bno4JODcR3VaJVFewQuCaK4J7I-CJ9IriUVBaoC918-SFxfcG5KuFMdgWqmrWykoPHRz2j3-UzpYw7x8L4uUnZmU2pZNRh37FdZSyxRpsvICQnnDYvNvBU9x7PYrT35zszeFd7XAxHxlvBA"/><div class="hidden sm:flex flex-col text-left"><span class="font-label-sm text-label-sm text-on-surface leading-none font-semibold">Admin</span><span class="font-label-sm text-[0.625rem] text-on-surface-variant leading-none mt-0.5">Cash Mgmt</span></div></div></div></div><div class="flex items-center justify-between gap-space-xs pb-space-xs"><button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm max-w-[85%] truncate transition-colors" type="button"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span><span class="truncate font-medium">Delhi-NCR • Last 7 Days • Auto-Refresh 5m</span><span class="material-symbols-outlined text-sm text-on-surface-variant">expand_more</span></button><div class="flex items-center gap-space-xs"><span class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[0.625rem] uppercase tracking-wider font-bold">Live</span></div></div></div></header><main class="flex flex-col relative w-full pt-28 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-8">
+<!-- Screen Sub-Header Context Bar -->
+<div class="px-margin pt-3 pb-2 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Predictive Engine Workspace</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+        v3.2 Live
+      </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Multi-zone telemetry &amp; ML ensemble cash disbursement outlook</p>
+</div>
+<!-- 1. Forecast Control Console -->
+<div class="px-margin mb-4">
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col gap-3">
+<!-- Cluster & Specific ATM Dropdowns -->
+<div class="grid grid-cols-1 gap-2.5">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Target Cluster / Node</label>
+<div class="relative">
+<select class="w-full h-9 pl-3 pr-8 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none focus:outline-none focus:bg-surface-container">
+<option selected="">All ATMs (Delhi-NCR Cluster - 148 Nodes)</option>
+<option>Zone DL-01: Connaught Place &amp; Central</option>
+<option>Zone UP-04: Noida Sector 18 &amp; 62 Hub</option>
+<option>Zone HR-02: Cyber City &amp; Golf Course Ext.</option>
+<option>Zone DL-09: Nehru Place Commercial Hub</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-on-surface-variant pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-2">
+<div class="flex-1">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Operating Region</label>
+<div class="relative">
+<select class="w-full h-8 pl-2.5 pr-7 rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm appearance-none focus:outline-none">
+<option>Delhi-NCR (East &amp; West Zones)</option>
+<option>Delhi Central &amp; South Corridor</option>
+<option>NCR Satellite Belt (Noida/GGN)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-on-surface-variant pointer-events-none text-sm">tune</span>
+</div>
+</div>
+<div class="flex-1">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Inference Engine</label>
+<div class="h-8 px-2 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-between">
+<span class="font-label-sm text-label-sm truncate">Random Forest v3.2</span>
+<span class="material-symbols-outlined text-xs text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Forecast Horizon Segmented Control -->
+<div>
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Forecasting Horizon</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Sep 29 - Oct 12, 2024</span>
+</div>
+<div class="grid grid-cols-3 gap-1 bg-surface-container-low p-1 rounded-lg" id="horizon-selector">
+<button class="py-1.5 text-center font-label-md text-label-md rounded text-on-surface-variant hover:text-on-surface transition-colors" onclick="setHorizon(this, 7)" type="button">7 Days</button>
+<button class="py-1.5 text-center font-label-md text-label-md rounded bg-surface-container-lowest text-primary shadow-xs font-semibold transition-all" onclick="setHorizon(this, 14)" type="button">14 Days</button>
+<button class="py-1.5 text-center font-label-md text-label-md rounded text-on-surface-variant hover:text-on-surface transition-colors" onclick="setHorizon(this, 30)" type="button">30 Days</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Forecast Key Metrics Stream -->
+<div class="px-margin mb-4">
+<!-- Hero Total Demand Metric -->
+<div class="bg-primary text-on-primary p-4 rounded-xl shadow-md mb-2.5 relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-28 h-28 rounded-full bg-white/10 blur-xl pointer-events-none"></div>
+<div class="flex items-start justify-between relative z-10">
+<div>
+<span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider">Total Projected Cluster Demand</span>
+<div class="flex items-baseline gap-2 mt-0.5">
+<span class="font-headline-xl-mobile text-headline-xl-mobile font-bold tracking-tight">₹18.62 Cr</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-white/20 text-white font-medium">+14.3% vs Prior</span>
+</div>
+<p class="font-body-sm text-body-sm text-primary-fixed mt-1">Horizon: 14 Days • 148 Managed Terminals</p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-white/15 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-white text-2xl">account_balance</span>
+</div>
+</div>
+</div>
+<!-- 2x2 Metric Grid -->
+<div class="grid grid-cols-2 gap-2">
+<!-- Peak Day Card -->
+<div class="bg-surface-container-lowest p-3 rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-1 text-error mb-1">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm uppercase font-bold tracking-wide">Peak Demand Day</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface">Oct 02, 2024</div>
+<div class="font-label-md text-label-md text-error font-semibold mt-0.5">₹1.88 Cr / day</div>
+</div>
+<div class="mt-2 pt-1.5 bg-surface-container-low -mx-3 -mb-3 px-3 py-1.5 rounded-b-xl flex items-center justify-between">
+<span class="font-label-sm text-[0.625rem] text-on-surface-variant truncate">Gandhi Jayanti Surge</span>
+<span class="material-symbols-outlined text-xs text-on-surface-variant">flag</span>
+</div>
+</div>
+<!-- Min Expected Card -->
+<div class="bg-surface-container-lowest p-3 rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-1 text-tertiary-container mb-1">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+<span class="font-label-sm text-label-sm uppercase font-bold tracking-wide">Minimum Inflow</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface">Sep 30, 2024</div>
+<div class="font-label-md text-label-md text-on-surface font-semibold mt-0.5">₹98.4 Lakhs</div>
+</div>
+<div class="mt-2 pt-1.5 bg-surface-container-low -mx-3 -mb-3 px-3 py-1.5 rounded-b-xl flex items-center justify-between">
+<span class="font-label-sm text-[0.625rem] text-on-surface-variant truncate">Quarter-End Trough</span>
+<span class="material-symbols-outlined text-xs text-on-surface-variant">event_busy</span>
+</div>
+</div>
+<!-- Cluster Daily Average -->
+<div class="bg-surface-container-lowest p-3 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Daily Average</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">functions</span>
+</div>
+<div class="mt-1">
+<div class="font-headline-md text-headline-md text-on-surface">₹1.33 Cr</div>
+<span class="font-body-sm text-[0.6875rem] text-on-surface-variant">Baseline across 14-days</span>
+</div>
+</div>
+<!-- Model Confidence -->
+<div class="bg-surface-container-lowest p-3 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Confidence (CI)</span>
+<span class="material-symbols-outlined text-sm text-emerald-600">verified_user</span>
+</div>
+<div class="mt-1">
+<div class="font-headline-md text-headline-md text-emerald-700 flex items-center gap-1">
+            94.2%
+            <span class="font-label-sm text-[0.6875rem] text-on-surface-variant font-normal">±4.1%</span>
+</div>
+<span class="font-body-sm text-[0.6875rem] text-on-surface-variant">95% Envelope Width</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Main Interactive Forecast Time-Series Visualization -->
+<div class="px-margin mb-4">
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col gap-3">
+<!-- Title & Live Tooltip Callout -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Demand Trajectory: Past vs Projected</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base cursor-pointer">info</span>
+</div>
+<!-- Dynamic Tap Banner / Tooltip State -->
+<div class="px-2.5 py-1.5 rounded-lg bg-surface-container-low flex items-center justify-between transition-all" id="chart-tooltip-badge">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface" id="tooltip-text">Oct 02 (Peak Holiday): ₹1.88 Cr Projected</span>
+</div>
+<span class="font-label-sm text-[0.625rem] text-on-surface-variant">CI: ₹1.78 - ₹1.98 Cr</span>
+</div>
+</div>
+<!-- SVG Chart Canvas -->
+<div class="w-full relative overflow-hidden bg-surface rounded-lg pt-2 pb-1">
+<svg class="w-full h-44 select-none touch-none" id="forecast-svg" viewbox="0 0 360 170">
+<defs>
+<!-- Confidence Interval Shaded Gradient -->
+<lineargradient id="confidenceGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#b7c4ff" stop-opacity="0.55"></stop>
+<stop offset="100%" stop-color="#b7c4ff" stop-opacity="0.08"></stop>
+</lineargradient>
+<lineargradient id="historicAreaGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#747686" stop-opacity="0.15"></stop>
+<stop offset="100%" stop-color="#747686" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Horizontal Grid Lines -->
+<line stroke="#eaedff" stroke-dasharray="3 3" stroke-width="1" x1="28" x2="350" y1="25" y2="25"></line>
+<line stroke="#eaedff" stroke-dasharray="3 3" stroke-width="1" x1="28" x2="350" y1="65" y2="65"></line>
+<line stroke="#eaedff" stroke-dasharray="3 3" stroke-width="1" x1="28" x2="350" y1="105" y2="105"></line>
+<line stroke="#eaedff" stroke-width="1" x1="28" x2="350" y1="145" y2="145"></line>
+<!-- Y-Axis Labels (₹ Cr) -->
+<text fill="#747686" font-family="Inter" font-size="8" text-anchor="end" x="24" y="29">2.0</text>
+<text fill="#747686" font-family="Inter" font-size="8" text-anchor="end" x="24" y="69">1.5</text>
+<text fill="#747686" font-family="Inter" font-size="8" text-anchor="end" x="24" y="109">1.0</text>
+<text fill="#747686" font-family="Inter" font-size="8" text-anchor="end" x="24" y="148">0.5</text>
+<!-- Confidence Interval Envelope Polygon (Sep 29 - Oct 12: X 180 -> 345) -->
+<!-- Upper line + Reversed Lower line -->
+<polygon fill="url(#confidenceGradient)" points="
+            180,95  215,35  245,70  280,80  315,65  345,55
+            345,95  315,105 280,120 245,110 215,68  180,95
+          "></polygon>
+<!-- Historical Baseline Underlay -->
+<polygon fill="url(#historicAreaGradient)" points="35,115 65,102 95,90 125,120 155,98 180,95 180,145 35,145"></polygon>
+<!-- Historical Trend Solid Line (Slate Blue #747686) -->
+<polyline fill="none" points="35,115 65,102 95,90 125,120 155,98 180,95" stroke="#747686" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></polyline>
+<!-- Historical Actual Data Dots -->
+<circle cx="35" cy="115" fill="#747686" r="2.5"></circle>
+<circle cx="65" cy="102" fill="#747686" r="2.5"></circle>
+<circle cx="95" cy="90" fill="#747686" r="2.5"></circle>
+<circle cx="125" cy="120" fill="#747686" r="2.5"></circle>
+<circle cx="155" cy="98" fill="#747686" r="2.5"></circle>
+<!-- TODAY Transition Marker: Vertical Dashed Line -->
+<line stroke="#ba1a1a" stroke-dasharray="2 2" stroke-width="1.5" x1="180" x2="180" y1="15" y2="145"></line>
+<rect fill="#ba1a1a" height="13" rx="3" width="36" x="162" y="12"></rect>
+<text fill="#ffffff" font-family="Inter" font-size="7.5" font-weight="600" text-anchor="middle" x="180" y="21">TODAY</text>
+<!-- Future ML Projected Demand Line (Dashed, High-Tech Indigo #4b41e1) -->
+<polyline fill="none" points="180,95 215,48 245,88 280,98 315,82 345,74" stroke="#4b41e1" stroke-dasharray="4 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></polyline>
+<!-- Peak Surge Highlight Pin (Oct 02: x=215, y=48) -->
+<circle class="animate-pulse" cx="215" cy="48" fill="#4b41e1" r="5"></circle>
+<circle cx="215" cy="48" fill="#ffffff" r="2.5"></circle>
+<!-- Projected Step Points -->
+<circle cx="245" cy="88" fill="#4b41e1" r="2"></circle>
+<circle cx="280" cy="98" fill="#4b41e1" r="2"></circle>
+<circle cx="315" cy="82" fill="#4b41e1" r="2"></circle>
+<circle cx="345" cy="74" fill="#4b41e1" r="2.5"></circle>
+<!-- X-Axis Labels -->
+<text fill="#747686" font-family="Inter" font-size="7.5" text-anchor="middle" x="35" y="158">Sep 18</text>
+<text fill="#747686" font-family="Inter" font-size="7.5" text-anchor="middle" x="95" y="158">Sep 22</text>
+<text fill="#747686" font-family="Inter" font-size="7.5" text-anchor="middle" x="155" y="158">Sep 26</text>
+<text fill="#ba1a1a" font-family="Inter" font-size="7.5" font-weight="600" text-anchor="middle" x="215" y="158">Oct 02</text>
+<text fill="#747686" font-family="Inter" font-size="7.5" text-anchor="middle" x="280" y="158">Oct 07</text>
+<text fill="#747686" font-family="Inter" font-size="7.5" text-anchor="middle" x="340" y="158">Oct 12</text>
+</svg>
+</div>
+<!-- Chart Legend -->
+<div class="flex flex-wrap items-center justify-between gap-y-1.5 pt-1">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-[#747686] rounded"></span>
+<span class="font-label-sm text-[0.625rem] text-on-surface-variant">Historical Actuals</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 border-t-2 border-dashed border-secondary"></span>
+<span class="font-label-sm text-[0.625rem] text-secondary font-semibold">ML Prediction</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-2 bg-primary-fixed rounded-xs opacity-75"></span>
+<span class="font-label-sm text-[0.625rem] text-on-surface-variant">95% Conf. Band</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. Demand Distribution Breakdown by Region -->
+<div class="px-margin mb-4">
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Zonal Demand Allocation</span>
+<p class="font-body-sm text-[0.6875rem] text-on-surface-variant">Projected ₹18.62 Cr distributed across NCR corridors</p>
+</div>
+<span class="material-symbols-outlined text-primary text-base">donut_small</span>
+</div>
+<!-- Multi-Segment Distribution Bar -->
+<div class="w-full h-3 rounded-full overflow-hidden flex bg-surface-container-high">
+<div class="bg-primary h-full" style="width: 39%;" title="Delhi Central &amp; South: 39%"></div>
+<div class="bg-secondary-container h-full" style="width: 29%;" title="Noida: 29%"></div>
+<div class="bg-tertiary-container h-full" style="width: 19%;" title="Ghaziabad: 19%"></div>
+<div class="bg-outline h-full" style="width: 13%;" title="Gurgaon: 13%"></div>
+</div>
+<!-- Regional List Cards -->
+<div class="flex flex-col gap-2 pt-1">
+<!-- Region 1 -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary flex-shrink-0"></span>
+<div>
+<span class="font-label-md text-label-md text-on-surface font-semibold block leading-tight">Delhi Central &amp; South</span>
+<span class="font-body-sm text-[0.625rem] text-on-surface-variant">54 ATMs • Commercial &amp; Diplomatic</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-on-surface font-bold">₹7.2 Cr</span>
+<span class="font-label-sm text-[0.625rem] text-primary block font-medium">39% share</span>
+</div>
+</div>
+<!-- Region 2 -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container flex-shrink-0"></span>
+<div>
+<span class="font-label-md text-label-md text-on-surface font-semibold block leading-tight">Noida &amp; Greater Noida</span>
+<span class="font-body-sm text-[0.625rem] text-on-surface-variant">42 ATMs • Tech Parks &amp; Res. Hubs</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-on-surface font-bold">₹5.4 Cr</span>
+<span class="font-label-sm text-[0.625rem] text-secondary font-medium">29% share</span>
+</div>
+</div>
+<!-- Region 3 -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container flex-shrink-0"></span>
+<div>
+<span class="font-label-md text-label-md text-on-surface font-semibold block leading-tight">Ghaziabad &amp; East Sector</span>
+<span class="font-body-sm text-[0.625rem] text-on-surface-variant">28 ATMs • Retail &amp; Transit Points</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-on-surface font-bold">₹3.6 Cr</span>
+<span class="font-label-sm text-[0.625rem] text-tertiary-container block font-medium">19% share</span>
+</div>
+</div>
+<!-- Region 4 -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-outline flex-shrink-0"></span>
+<div>
+<span class="font-label-md text-label-md text-on-surface font-semibold block leading-tight">Gurgaon &amp; Faridabad</span>
+<span class="font-body-sm text-[0.625rem] text-on-surface-variant">24 ATMs • Cyber Corridor Nodes</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-on-surface font-bold">₹2.4 Cr</span>
+<span class="font-label-sm text-[0.625rem] text-on-surface-variant block font-medium">13% share</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 5. Key Predictive Drivers (SHAP / Feature Attribution) -->
+<div class="px-margin mb-4">
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-base">neurology</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Key Predictive Drivers</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-[0.625rem] font-bold">SHAP Weights</span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Driver 1: Holiday Uplift -->
+<div class="p-2.5 rounded-lg bg-amber-50/70 flex items-start gap-2.5">
+<div class="w-7 h-7 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-base">celebration</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-amber-950">Calendar &amp; Holiday Effects</span>
+<span class="font-label-sm text-label-sm text-amber-800 font-bold bg-amber-200/60 px-1.5 py-0.5 rounded">+22% Surge</span>
+</div>
+<p class="font-body-sm text-[0.6875rem] text-amber-900/80 mt-1 leading-relaxed">
+              Major uplift forecasted on <span class="font-semibold text-amber-950">Oct 02</span> due to National Holiday and preceding long-weekend market liquidity demand.
+            </p>
+</div>
+</div>
+<!-- Driver 2: Salary Cycle -->
+<div class="p-2.5 rounded-lg bg-blue-50/70 flex items-start gap-2.5">
+<div class="w-7 h-7 rounded-md bg-blue-100 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-base">payments</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-primary">Payday &amp; Salary Disbursements</span>
+<span class="font-label-sm text-label-sm text-primary font-bold bg-primary-fixed px-1.5 py-0.5 rounded">+18% Surge</span>
+</div>
+<p class="font-body-sm text-[0.6875rem] text-primary/80 mt-1 leading-relaxed">
+              Payroll cycle peak expected on <span class="font-semibold text-primary">Oct 01</span> with concentrated withdrawals across commercial IT corridors in Noida &amp; Gurgaon.
+            </p>
+</div>
+</div>
+<!-- Driver 3: Weather Sensitivity -->
+<div class="p-2.5 rounded-lg bg-slate-50 flex items-start gap-2.5">
+<div class="w-7 h-7 rounded-md bg-slate-200 text-on-surface-variant flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-base">rainy</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Weather &amp; Monsoon Pattern</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold bg-surface-container-high px-1.5 py-0.5 rounded">-3% Mild Dip</span>
+</div>
+<p class="font-body-sm text-[0.6875rem] text-on-surface-variant mt-1 leading-relaxed">
+              Intermittent rainfall predicted for Sep 30; expected to momentarily dampen outdoor walk-up ATM transactions by ~3%.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 6. Export & Scenario Planning Action Controls -->
+<div class="px-margin flex flex-col gap-2">
+<!-- What-If Simulation Trigger -->
+<button class="w-full py-3 px-4 rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm font-semibold flex items-center justify-center gap-2 shadow-md hover:bg-primary-container active:scale-[0.99] transition-transform" type="button">
+<span class="material-symbols-outlined text-lg">science</span>
+      Run What-If Simulation (+10% Festive Spike)
+    </button>
+<!-- Secondary Download Actions -->
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2.5 px-3 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md font-medium flex items-center justify-center gap-1.5 shadow-xs hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-base text-primary">download</span>
+        Export CSV
+      </button>
+<button class="py-2.5 px-3 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md font-medium flex items-center justify-center gap-1.5 shadow-xs hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-base text-error">picture_as_pdf</span>
+        Executive PDF
+      </button>
+</div>
+</div>
+</div>
+<script>
+  function setHorizon(btn, days) {
+    const parent = document.getElementById('horizon-selector');
+    const buttons = parent.querySelectorAll('button');
+    buttons.forEach(b => {
+      b.className = 'py-1.5 text-center font-label-md text-label-md rounded text-on-surface-variant hover:text-on-surface transition-colors';
+    });
+    btn.className = 'py-1.5 text-center font-label-md text-label-md rounded bg-surface-container-lowest text-primary shadow-xs font-semibold transition-all';
+    
+    // Quick micro-interaction feedback on tooltip
+    const tooltipText = document.getElementById('tooltip-text');
+    if (days === 7) {
+      tooltipText.innerText = 'Next 7 Days: Focus on Oct 01-02 Weekend Surge';
+    } else if (days === 14) {
+      tooltipText.innerText = 'Oct 02 (Peak Holiday): ₹1.88 Cr Projected';
+    } else {
+      tooltipText.innerText = 'Next 30 Days: Month-end Diwali Pre-run Expected';
+    }
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-sm text-label-sm text-[0.6875rem]">Dashboard</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="atm-monitoring" href="#"><span class="material-symbols-outlined text-[22px]">local_atm</span><span class="font-label-sm text-label-sm text-[0.6875rem]">ATMs</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 transition-colors text-primary font-semibold" data-path="demand-forecast" href="#"><span class="material-symbols-outlined text-[22px]">trending_up</span><span class="font-label-sm text-label-sm text-[0.6875rem]">Forecast</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="replenishment" href="#"><span class="material-symbols-outlined text-[22px]">local_shipping</span><span class="font-label-sm text-label-sm text-[0.6875rem]">Replenish</span></a><a class="flex flex-col items-center justify-center min-w-[56px] h-12 gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="alerts" href="#"><span class="material-symbols-outlined text-[22px]">notification_important</span><span class="font-label-sm text-label-sm text-[0.6875rem]">Alerts</span></a></div></nav></body></html>
